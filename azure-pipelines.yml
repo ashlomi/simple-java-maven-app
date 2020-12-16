@@ -27,10 +27,10 @@ steps:
     body: |
       {
         "applicationName": "ADO",
-        "applicationVersionBuildNumber": "$(system.JobId)",
-        "applicationVersionBuildUrl": "$(system.CollectionUri)",
+        "applicationVersionBuildNumber": "Assaf-2",
+        "applicationVersionBuildUrl": "https://cddirector.io/",
         "applicationVersionName": "master",
-        "buildStartTime": "$(system.TimelineId)"
+        "buildStartTime": "0"
        }
     contentType: 'application/json'
     allowInvalidSSLCertificate: false
