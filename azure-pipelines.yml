@@ -2,6 +2,7 @@
 - task: InvokeRESTAPI@1
   inputs:
     connectionType: 'connectedServiceName'
+    serviceConnection: 'Build Notification to cddirector.io'
     method: 'POST'
     body: |
       {
@@ -11,8 +12,8 @@
         "applicationVersionName": "master",
         "buildStartTime": "$(system.TimelineId)"
        }
-    urlSuffix: 'https://cddirector.io/cdd/design/0000/v1/applications/application-versions/application-version-builds'
     waitForCompletion: 'false'
+
 # Build your Java project and run tests with Apache Maven.
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
