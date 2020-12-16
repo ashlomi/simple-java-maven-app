@@ -12,11 +12,11 @@ pool:
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
-- task: InvokeRESTAPI@1
+- task: restCallBuildTask@0
   inputs:
-    connectionType: 'connectedServiceName'
-    serviceConnection: 'Build Notification to cddirector.io'
-    method: 'POST'
+    webserviceEndpoint: 'Build Notification to cddirector.io'
+    relativeUrl: 
+    httpVerb: 'POST'
     body: |
       {
         "applicationName": "ADO",
@@ -25,7 +25,8 @@ steps:
         "applicationVersionName": "master",
         "buildStartTime": "0"
        }
-    waitForCompletion: 'false'
+    contentType: 'application/json'
+    allowInvalidSSLCertificate: false
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
