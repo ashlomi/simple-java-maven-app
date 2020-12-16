@@ -12,22 +12,14 @@ pool:
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
-- task: restCallBuildTask@0
+- task: InvokeRESTAPI@1
   inputs:
-    webserviceEndpoint: 'Build Notification to cddirector.io'
-    relativeUrl: 
-    httpVerb: 'POST'
-    body: |
-      {
-        "applicationName": "ADO",
-        "applicationVersionBuildNumber": "Assaf-2",
-        "applicationVersionBuildUrl": "https://cddirector.io/",
-        "applicationVersionName": "master",
-        "buildStartTime": "0"
-       }
-    contentType: 'application/json'
-    allowInvalidSSLCertificate: false
-
+    connectionType: 'connectedServiceName' 
+    #erviceConnection: 'Build Notification to cddirector.io'
+    method: 'POST' 
+    headers: '{Content-Type:application/json, PlanUrl: $(system.CollectionUri), ProjectId: $(system.TeamProjectId), HubName: $(system.HostType), PlanId: $(system.PlanId), JobId: $(system.JobId), TimelineId: $(system.TimelineId), TaskInstanceId: $(system.TaskInstanceId), AuthToken: $(system.AccessToken)}' 
+    body: '{"applicationName": "ADO","applicationVersionBuildNumber": "Assaf-2","applicationVersionBuildUrl": "https://cddirector.io/","applicationVersionName": "master", "buildStartTime": "0"}'
+    waitForCompletion: 'true' 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
