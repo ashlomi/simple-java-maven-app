@@ -1,17 +1,4 @@
 # Maven
-  inputs:
-    connectionType: 'connectedServiceName'
-    serviceConnection: 'Build Notification to cddirector.io'
-    method: 'POST'
-    body: |
-      {
-        "applicationName": "ADO",
-        "applicationVersionBuildNumber": "$(system.JobId)",
-        "applicationVersionBuildUrl": "$(system.CollectionUri)",
-        "applicationVersionName": "master",
-        "buildStartTime": "$(system.TimelineId)"
-       }
-    waitForCompletion: 'false'
 # Build your Java project and run tests with Apache Maven.
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
