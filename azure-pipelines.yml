@@ -32,3 +32,17 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
+- task: InvokeRESTAPI@1
+  inputs:
+    connectionType: 'connectedServiceName'
+    serviceConnection: 'Build Notification to cddirector.io'
+    method: 'POST'
+    body: |
+      {
+        "applicationName": "ADO",
+        "applicationVersionBuildNumber": "$(system.JobId)",
+        "applicationVersionBuildUrl": "$(system.CollectionUri)",
+        "applicationVersionName": "master",
+        "buildStartTime": "$(system.TimelineId)"
+       }
+    waitForCompletion: 'false'
