@@ -12,6 +12,20 @@ pool:
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
+- task: InvokeRESTAPI@1
+  inputs:
+    connectionType: 'connectedServiceName'
+    serviceConnection: 'Build Notification to cddirector.io'
+    method: 'POST'
+    body: |
+      {
+        "applicationName": "ADO",
+        "applicationVersionBuildNumber": "Assaf-2",
+        "applicationVersionBuildUrl": "https://cddirector.io/",
+        "applicationVersionName": "master",
+        "buildStartTime": "0"
+       }
+    waitForCompletion: 'false'
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
