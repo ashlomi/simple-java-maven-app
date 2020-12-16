@@ -27,10 +27,10 @@ steps:
     body: |
       {
         "applicationName": "ADO",
-        "applicationVersionBuildNumber": "Assaf-2",
-        "applicationVersionBuildUrl": "https://cddirector.io/",
-        "applicationVersionName": "master",
-        "buildStartTime": "0"
-       }
+       "applicationVersionBuildNumber": "Assaf-2",
+       "applicationVersionBuildUrl": "https://cddirector.io/",
+       "applicationVersionName": "master",
+       "buildStartTime": "0"
+      }
     contentType: 'application/json'
-    allowInvalidSSLCertificate: false
+    allowInvalidSSLCertificate: true
