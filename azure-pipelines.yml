@@ -19,18 +19,17 @@ steps:
 #    publishJUnitResults: true
 #    testResultsFiles: '**/surefire-reports/TEST-*.xml'
 #    goals: 'package'
-- task: restCallBuildTask@0
+- task: InvokeRESTAPI@1
   inputs:
-    webserviceEndpoint: 'Build Notification to cddirector.io'
-    relativeUrl: 
-    httpVerb: 'POST'
+    connectionType: 'connectedServiceName'
+    serviceConnection: 'Build Notification to cddirector.io'
+    method: 'POST'
     body: |
       {
         "applicationName": "ADO",
-       "applicationVersionBuildNumber": "Assaf-2",
-       "applicationVersionBuildUrl": "https://cddirector.io/",
-       "applicationVersionName": "master",
-       "buildStartTime": "0"
-      }
-    contentType: 'application/json'
-    allowInvalidSSLCertificate: true
+        "applicationVersionBuildNumber": "Assaf-2",
+        "applicationVersionBuildUrl": "https://cddirector.io/",
+        "applicationVersionName": "master",
+        "buildStartTime": "0"
+       }
+    waitForCompletion: 'false'
